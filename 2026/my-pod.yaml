@@ -1,0 +1,13 @@
+apiVersion: v1                        # versão da api do documento
+kind: Pod                             # tipo do recurso
+metadata:                             # metadados referentes a esse pod
+  name: my-pod-webserver              # nome do recurso
+  labels:                             # referencias usadas para acessar o recurso
+    apps: my-app
+    tier: frontend
+
+spec:
+  containers:                         # containers existentes pod
+    - name: my-container-nginx        # nome do container
+      image: nginx                    # imagem usada
+
