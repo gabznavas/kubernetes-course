@@ -1,0 +1,23 @@
+apiVersion: apps/v1                                    # grupo/versao
+kind: ReplicaSet                                       # tipo do recurso
+metadata:
+  name: frontend-rs                                    # nome deste replicaset
+  labels: 
+    app: frontend                                      # label definida ao replicaset
+
+spec:
+  template:                                            # definições do Pod
+    metadata:                                          # dados do Pod
+      name: my-pod-webserver                           # nome do Pod
+      labels:                                          # labels do Pod
+        apps: my-app
+        tier: frontend
+    spec:
+      containers:                                      # containers dentro do Pod
+        - name: my-container-nginx
+          image: nginx
+  selector:                                            # selecionar Pods aqui definidas
+    matchLabels:                                       # seleção por labels
+      apps: my-app
+  replicas: 4                                          # quantidade de replicas para os Pods selecionados
+
